@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-black">
       <div className="flex justify-center flex-col flex-1 w-full">
         <p className="text-7xl font-bold text-left first-letter:text-cyan-700">
           Yen Colon
