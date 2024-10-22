@@ -21,14 +21,14 @@ const socialLinks = [
     href: 'mailto:yencolon@gmail.com',
     src: '/email.svg',
     alt: 'Email',
-    username: 'yenjcc@gmail.com',
+    username: 'yencolon@gmail.com',
     label: 'Send email'
   }
 ];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-6 sm:p-24">
       <div className="flex flex-col items-center flex-1 w-full">
         <div className="mb-6">
           <Image
@@ -39,21 +39,18 @@ export default function Home() {
             className="rounded-full"
           />
         </div>
-        <p className="text-7xl font-bold text-left first-letter:text-cyan-700 dark:text-white">
+        <p className="text-4xl sm:text-7xl font-bold text-left first-letter:text-cyan-700 dark:text-white">
           Yen Colon
         </p>
-        <p className="text-lg font-light text-left pt-2">
+        <p className="text-base sm:text-lg font-light text-left pt-2">
           Software developer
         </p>
-        <div className="pt-4 w-3/6">
-          <p className="mb-3 text-gray-500 dark:text-gray-400">
-            Software developer with over 4 years of experience in the field, 
-            possessing strong expertise in front-end and back-end software development. 
-            Started as a freelance developer, creating mobile apps and APIs for clients. 
-            Currently focused on React, Angular, and Spring Boot development.
+        <div className="pt-4 w-full sm:w-3/6">
+          <p className="text-sm sm:text-base mb-3 text-gray-500 dark:text-gray-400 px-2 sm:px-0">
+            Software developer with over 4 years of experience in the field, possessing strong expertise in front-end and back-end software development. Started as a freelance developer, creating mobile apps and APIs for clients. Currently focused on React, Angular, and Spring Boot development.
           </p>
         </div>
-        <div className="pt-4 w-3/6">
+        <div className="pt-4 w-full sm:w-3/6">
           <div className="flex justify-around items-center mb-3">
             {socialLinks.map(({ href, src, alt, label, username }) => (
               <a
@@ -67,7 +64,7 @@ export default function Home() {
                 <div className="bg-white rounded-full p-2 shadow-md flex items-center justify-center w-16 h-16">
                   <Image src={src} alt={alt} width={24} height={24} />
                 </div>
-                <span className="text-sm text-gray-600 mt-2">{username}</span>
+                <span className="text-xs sm:text-sm text-gray-600 mt-2">{username}</span>
               </a>
             ))}
           </div>
@@ -75,8 +72,8 @@ export default function Home() {
       </div>
       <div className="flex flex-col flex-1 w-full">
         <footer className="flex justify-end flex-col flex-1 w-full text-center mt-auto">
-          <p className="text-sm text-gray-600">
-            &copy; {new Date().getFullYear()} Yen Colon. Todos los derechos reservados
+          <p className="text-xs sm:text-sm text-gray-600">
+            &copy; 2023 Yen Colon. Todos los derechos reservados.
           </p>
         </footer>
       </div>
