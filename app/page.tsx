@@ -21,7 +21,7 @@ const socialLinks = [
     href: 'mailto:yencolon@gmail.com',
     src: '/email.svg',
     alt: 'Email',
-    username: 'yencolon@gmail.com',
+    username: 'yenjcc@gmail.com',
     label: 'Send email'
   }
 ];
