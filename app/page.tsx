@@ -73,7 +73,7 @@ export default function Home() {
       <div className="flex flex-col flex-1 w-full">
         <footer className="flex justify-end flex-col flex-1 w-full text-center mt-auto">
           <p className="text-xs sm:text-sm text-gray-600">
-            &copy; 2023 Yen Colon. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Yen Colon. Todos los derechos reservados.
           </p>
         </footer>
       </div>
