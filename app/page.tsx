@@ -18,7 +18,7 @@ const socialLinks = [
     label: 'Visit LinkedIn profile'
   },
   {
-    href: 'mailto:yencolon@gmail.com',
+    href: 'mailto:yenjcc@gmail.com',
     src: '/email.svg',
     alt: 'Email',
     username: 'yenjcc@gmail.com',
@@ -28,7 +28,7 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12 bg-gradient-to-br from-blue-800 to-blue-900">
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12 bg-gradient-to-br from-black-800 to-black-900">
       <div className="flex w-full max-w-4xl bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
         <div className="flex flex-col items-start justify-center p-8 bg-gradient-to-br from-blue-700 to-blue-800 text-white rounded-tl-lg rounded-bl-lg shadow-inner">
           <Image
