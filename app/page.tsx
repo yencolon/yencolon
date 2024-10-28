@@ -47,7 +47,7 @@ export default function Home() {
         </p>
         <div className="pt-4 w-full sm:w-3/6">
           <p className="text-sm sm:text-base mb-3 text-gray-500 dark:text-gray-400 px-2 sm:px-0">
-            Software developer with over 4 years of experience in the field, possessing strong expertise in front-end and back-end software development. Started as a freelance developer, creating mobile apps and APIs for clients. Currently focused on React, Angular, and Spring Boot development.
+            Software developer with over 4 years of experience in the field, possessing strong expertise in front-end and back-end software development. Started as a freelance developer, creating mobile apps and APIs for clients. Currently focused on Java, Kotlin and JavaScript languages.
           </p>
         </div>
         <div className="pt-4 w-full sm:w-3/6">
@@ -68,6 +68,9 @@ export default function Home() {
               </a>
             ))}
           </div>
+        </div>
+        <div>
+          <a href="https://app.daily.dev/yencolon"><img src="https://api.daily.dev/devcards/v2/N9KR9YPeTeM4HJDAPzGOI.png?type=default&r=zpv" width="356" alt="Yen Colon's Dev Card" /></a>
         </div>
       </div>
       <div className="flex flex-col flex-1 w-full">
