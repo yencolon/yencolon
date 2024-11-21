@@ -1,82 +1,74 @@
-import Image from 'next/image';
+import { Card, CardContent } from "@/components/ui/card";
+import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import Image from "next/image";
 
-const profileImageUrl = 'https://github.com/yencolon.png';
+export default function Component() {
+  const profileImageUrl = "https://github.com/yencolon.png";
 
-const socialLinks = [
-  {
-    href: 'https://github.com/yencolon',
-    src: '/github.svg',
-    alt: 'GitHub',
-    username: 'yencolon',
-    label: 'Visit GitHub profile'
-  },
-  {
-    href: 'https://www.linkedin.com/in/yencolon/',
-    src: '/linkedin.svg',
-    alt: 'LinkedIn',
-    username: 'yencolon',
-    label: 'Visit LinkedIn profile'
-  },
-  {
-    href: 'mailto:yenjcc@gmail.com',
-    src: '/email.svg',
-    alt: 'Email',
-    username: 'yenjcc@gmail.com',
-    label: 'Send email'
-  }
-];
+  const socialLinks = [
+    {
+      href: "https://github.com/yencolon",
+      icon: GithubIcon,
+      alt: "GitHub",
+      label: "Visit GitHub profile",
+    },
+    {
+      href: "https://www.linkedin.com/in/yencolon/",
+      icon: LinkedinIcon,
+      alt: "LinkedIn",
+      label: "Visit LinkedIn profile",
+    },
+    {
+      href: "mailto:yenjcc@gmail.com",
+      icon: MailIcon,
+      alt: "Email",
+      label: "Send email",
+    },
+  ];
 
-export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 bg-gradient-to-br from-blue-900 to-black-900 animate-fade-in">
-      <div className="flex flex-col sm:flex-row w-full max-w-3xl bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
-        <div className="flex flex-col items-center justify-center p-6 sm:p-8 bg-gradient-to-br from-blue-700 to-blue-800 text-white sm:rounded-tl-lg sm:rounded-bl-lg">
-          <Image
-            src={profileImageUrl}
-            alt="Profile Picture"
-            width={100}
-            height={100}
-            className="rounded-full shadow-lg"
-          />
-        </div>
-        <div className="flex flex-col items-center sm:items-start flex-1 p-6 sm:p-8">
-          <p className="text-3xl sm:text-4xl font-bold text-center sm:text-left text-blue-300 dark:text-blue-200">
-            Yen Colon
-          </p>
-          <p className="text-base sm:text-lg font-light text-center sm:text-left pt-2 text-blue-200 dark:text-blue-100">
-            Software Developer
-          </p>
-          <div className="pt-4 w-full">
-            <p className="text-xs sm:text-sm mb-3 text-gray-300 dark:text-gray-400 text-center sm:text-justify leading-relaxed">
-              Software developer with over 4 years of experience in the field, possessing strong expertise in front-end and back-end software development. Started as a freelance developer, creating mobile apps and APIs for clients. Currently focused on Java, Kotlin, and JavaScript languages.
-            </p>
-          </div>
-          <div className="pt-4 w-full">
-            <div className="flex sm:space-x-4  justify-around items-center">
-              {socialLinks.map(({ href, src, alt, label, username }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={label}
-                  className="flex flex-col items-center text-center w-20 sm:w-24 hover:text-blue-300"
-                >
-                  <div className="bg-white rounded-full p-2 shadow-lg flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 mb-2 hover:bg-blue-200">
-                    <Image src={src} alt={alt} width={20} height={20} />
-                  </div>
-                  <span className="text-[10px] sm:text-xs text-gray-300 dark:text-gray-500">{username}</span>
-                </a>
-              ))}
+    <div className="relative min-h-screen bg-gradient-to-b from-black to-gray-800 p-8 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-900 via-indigo-900 to-black opacity-50"></div>
+      <Card className="relative w-full max-w-xl bg-black bg-opacity-40 text-white backdrop-blur-lg rounded-3xl shadow-2xl">
+        <CardContent className="p-12 flex flex-col gap-6 relative z-10">
+          <div className="flex justify-center mb-4">
+            <div className="relative w-48 h-48 rounded-full overflow-hidden ring-4 ring-indigo-500 shadow-lg">
+              <Image
+                src={profileImageUrl}
+                alt="Profile picture"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
-        </div>
-      </div>
-      <footer className="w-full text-center mt-8">
-        <p className="text-xs sm:text-sm text-gray-300 dark:text-gray-500">
-          &copy; {new Date().getFullYear()} Yen Colon. Todos los derechos reservados.
-        </p>
-      </footer>
-    </main>
+          <div className="text-center space-y-4">
+            <h1 className="text-5xl font-extrabold text-transparent bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text">
+              Yen Colon
+            </h1>
+            <p className="text-gray-300">
+              Crafting software solutions with a passion for innovation and creativity.
+            </p>
+          </div>
+          <div className="flex justify-center gap-8 mt-8">
+            {socialLinks.map((link, index) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-transform transform hover:scale-110 bg-gradient-to-br from-indigo-600 to-purple-700 p-4 rounded-full flex items-center justify-center text-white shadow-inner hover:shadow-xl"
+                  aria-label={link.label}
+                >
+                  <Icon className="h-8 w-8" />
+                </a>
+              );
+            })}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
