@@ -1,85 +1,89 @@
 "use client"
 
-import { useState, useEffect } from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
-// List of countries and capitals (you can expand this list)
-const COUNTRIES = [
-  { country: "France", capital: "Paris" },
-  { country: "Germany", capital: "Berlin" },
-  { country: "Italy", capital: "Rome" },
-  { country: "Spain", capital: "Madrid" },
-  { country: "United Kingdom", capital: "London" },
-  { country: "Japan", capital: "Tokyo" },
-  { country: "Australia", capital: "Canberra" },
-  { country: "Brazil", capital: "Brasília" },
-  { country: "Canada", capital: "Ottawa" },
-  { country: "India", capital: "New Delhi" },
-]
+import { useState, useCallback } from 'react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import WorldMap from '@/components/world-map';
+import geoUrl from '@/public/map.json';
+import Topology from '@/types/Topology';
 
 export default function Component() {
-  const [currentCountry, setCurrentCountry] = useState("")
-  const [userGuess, setUserGuess] = useState("")
-  const [feedback, setFeedback] = useState("")
-  const [score, setScore] = useState(0)
-  const [totalGuesses, setTotalGuesses] = useState(0)
+  const [userGuess, setUserGuess] = useState<string>('');
+  const [guessedCountries, setGuessedCountries] = useState<string[]>([]);
+  const [score, setScore] = useState(0);
+  const [topologyMap, setTopologyMap] = useState<Topology>(geoUrl as Topology);
 
-  const selectRandomCountry = () => {
-    const randomIndex = Math.floor(Math.random() * COUNTRIES.length)
-    setCurrentCountry(COUNTRIES[randomIndex].country)
-    setUserGuess("")
-    setFeedback("")
-  }
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      const guessedCountry = userGuess.trim().toLowerCase();
+      if (!guessedCountry) return;
 
-  useEffect(() => {
-    selectRandomCountry()
-  }, [])
+      setTopologyMap(prevMap => {
+        const updatedGeometries = prevMap.objects["world"].geometries.map(g => {
+          const correctGuess = guessedCountry === g.properties.name.toLowerCase() && !g.properties.selected;
+          if (correctGuess) {
+            setGuessedCountries(prevCountries => [...prevCountries, g.properties.name]);
+            setScore(prevScore => prevScore + 1);
+            setUserGuess('');
+          }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const correctCapital = COUNTRIES.find(c => c.country === currentCountry)?.capital
-    if (userGuess.toLowerCase() === correctCapital?.toLowerCase()) {
-      setFeedback("Correct!")
-      setScore(score + 1)
-    } else {
-      setFeedback(`Sorry, the correct answer is ${correctCapital}.`)
-    }
-    setTotalGuesses(totalGuesses + 1)
-  }
+          return {
+            ...g,
+            properties: {
+              ...g.properties,
+              selected: correctGuess || g.properties.selected,
+            },
+          };
+        });
 
-  const handleNextCountry = () => {
-    selectRandomCountry()
-  }
+        return {
+          ...prevMap,
+          objects: {
+            ...prevMap.objects,
+            "world": {
+              ...prevMap.objects["world"],
+              geometries: updatedGeometries,
+            },
+          },
+        };
+      });
+    },
+    [userGuess]
+  );
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Capital Cities Game</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-lg mb-4 text-center">What is the capital of <strong>{currentCountry}</strong>?</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            type="text"
-            value={userGuess}
-            onChange={(e) => setUserGuess(e.target.value)}
-            placeholder="Enter capital city"
-            className="w-full"
-          />
-          <Button type="submit" className="w-full">Submit Guess</Button>
-        </form>
-        {feedback && (
-          <p className={`mt-4 text-center ${feedback.startsWith('Correct') ? 'text-green-600' : 'text-red-600'}`}>
-            {feedback}
-          </p>
-        )}
-        {feedback && (
-          <Button onClick={handleNextCountry} className="w-full mt-4">Next Country</Button>
-        )}
-        <p className="mt-4 text-center">Score: {score} / {totalGuesses}</p>
-      </CardContent>
-    </Card>
-  )
+    <div className='h-screen w-full flex items-center justify-around'>
+      <div className="w-1/6 h-full">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center">Name all the countries</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                type="text"
+                value={userGuess}
+                onChange={(e) => setUserGuess(e.target.value)}
+                placeholder="Enter country name"
+                className="w-full"
+              />
+              <Button type="submit" className="w-full">Submit</Button>
+            </form>
+            <p className="mt-4 text-center">Score: {score} / {topologyMap.objects["world"].geometries.length}</p>
+          </CardContent>
+        </Card>
+        <div className='p-3'>
+          <h2 className='text-center text-xl'>Guessed Countries</h2>
+          {guessedCountries.map((country, index) => (
+            <p key={index} className="text-center">{country}</p>
+          ))}
+        </div>
+      </div>
+      <div className='w-5/6 h-full flex items-center justify-center bg-orange-700'>
+        <WorldMap topologyMap={topologyMap} />
+      </div>
+    </div>
+  );
 }

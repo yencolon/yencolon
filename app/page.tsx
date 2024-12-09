@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import { GamepadIcon, GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
 import Image from "next/image";
 
 export default function Component() {
@@ -11,19 +11,29 @@ export default function Component() {
       icon: GithubIcon,
       alt: "GitHub",
       label: "Visit GitHub profile",
+      openInNewTab: true,
     },
     {
       href: "https://www.linkedin.com/in/yencolon/",
       icon: LinkedinIcon,
       alt: "LinkedIn",
       label: "Visit LinkedIn profile",
+      openInNewTab: true,
     },
     {
       href: "mailto:yenjcc@gmail.com",
       icon: MailIcon,
       alt: "Email",
       label: "Send email",
+      openInNewTab: true,
     },
+    {
+      href: "guess",
+      icon: GamepadIcon,
+      alt: "Prove your geo knowledge",
+      label: "Geo Play",
+      openInNewTab: false,
+    }
   ];
 
   return (
@@ -57,8 +67,8 @@ export default function Component() {
                 <a
                   key={index}
                   href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={link.openInNewTab ? "_blank" : "_self"}
+                  rel={link.openInNewTab ? "noopener noreferrer" : ""}
                   className="transition-transform transform hover:scale-110 bg-gradient-to-br from-indigo-600 to-purple-700 p-4 rounded-full flex items-center justify-center text-white shadow-inner hover:shadow-xl"
                   aria-label={link.label}
                 >
