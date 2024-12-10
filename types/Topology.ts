@@ -22,4 +22,12 @@ interface Properties {
     selected?: boolean;
 }
 
+
+interface Coordinate {
+    latitude: number;
+    longitude: number;
+}
+
+export type { Coordinate };
+
 export default Topology;
