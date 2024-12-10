@@ -28,11 +28,11 @@ export default function Component() {
       openInNewTab: true,
     },
     {
-      href: "guess",
+      href: "https://geo-guess-game.vercel.app/",
       icon: GamepadIcon,
       alt: "Prove your geo knowledge",
       label: "Geo Play",
-      openInNewTab: false,
+      openInNewTab: true,
     }
   ];
 
@@ -72,7 +72,7 @@ export default function Component() {
                   className="transition-transform transform hover:scale-110 bg-gradient-to-br from-indigo-600 to-purple-700 p-4 rounded-full flex items-center justify-center text-white shadow-inner hover:shadow-xl"
                   aria-label={link.label}
                 >
-                  <Icon className="h-8 w-8" />
+                  <Icon className="h-4 w-4 md:h-8 md:w-8" />
                 </a>
               );
             })}
