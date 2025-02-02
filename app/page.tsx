@@ -1,14 +1,19 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { ShortcutIcon } from "@/components/ui/shortcutIcon";
 import {
   GamepadIcon,
   GithubIcon,
   LinkedinIcon,
   MailIcon,
   CameraIcon,
+  BookImage,
+  FileChartLine,
+  Folder,
+  Trash2,
+  Music,
+  Binary,
+  FileCode,
+  Earth,
 } from "lucide-react";
-import Image from "next/image";
 
 export default function Component() {
   const profileImageUrl = "https://github.com/yencolon.png";
@@ -53,10 +58,66 @@ export default function Component() {
   ];
 
   return (
-    <div className="flex justify-center items-center h-screen bg-slate-50 dark:bg-gray-900">
-      <div className="bg-orange-300 dark:bg-gray-800 border-2 border-neutral-800 dark:border-green-300 h-screen sm:h-auto">
-        <div className="bg-green-200 ">
+    <div className="flex justify-center items-center h-screen bg-cyan-700 dark:bg-gray-900">
+      <div className="absolute left-0 flex flex-col flex-wrap h-screen justify-start self-end p-5 gap-2">
+        <ShortcutIcon
+          Icon={BookImage}
+          color="red"
+          alt="go to photos"
+          label="photos"
+        />
+        <ShortcutIcon
+          Icon={FileCode}
+          color="yellow"
+          alt="code"
+          label="template.jsx"
+        />
+
+        <ShortcutIcon
+          Icon={Folder}
+          color="blue"
+          alt="go to files"
+          label="files"
+        />
+        <ShortcutIcon
+          Icon={Trash2}
+          color="purple"
+          alt="recycle bin"
+          label="recycle bin"
+        />
+        <ShortcutIcon
+          Icon={Music}
+          color="green"
+          alt="play a song"
+          label="music"
+        />
+        <ShortcutIcon
+          Icon={Binary}
+          color="yellow"
+          alt="execute"
+          label="yen.exe"
+        />
+
+        <ShortcutIcon
+          Icon={FileChartLine}
+          color="green"
+          alt="excel file"
+          label="asjssakskd.xls"
+        />
+
+        <ShortcutIcon
+          Icon={Earth}
+          color="blue"
+          alt="world has never being so small"
+          label="earth"
+        />
+      </div>
+      <div className="absolute shadow-2xl bg-orange-300 dark:bg-gray-800 md:border-2 border-neutral-800 dark:border-green-300 h-screen sm:h-auto  transition duration-300 hover:scale-105">
+        <div className="bg-green-200 flex justify-between items-center border-b-2 border-black">
           <div>U+00A5 U+003A</div>
+          <div className="text-lg bg-red-600 px-2 border-l-2 border-black">
+            x
+          </div>
         </div>
         <div className="m-10">
           <h2 className="text-4xl md:text-6xl font-bold font-mono text-black dark:text-white">
@@ -94,7 +155,7 @@ export default function Component() {
         <div className="m-10">
           <a
             className="bg-black p-4 text-white dark:bg-white dark:text-black"
-            href="https://drive.google.com/file/d/1wzJ7rZCmVJn6o5y5V7t1Zk9X1V2b4wYg/view?usp=sharing"
+            href="https://drive.google.com/file/d/1COeXueXdQsFO5ecGyfJPDhUkeBot7Fc1/view"
             target="_blank"
           >
             View my resume
