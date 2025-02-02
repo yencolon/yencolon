@@ -71,7 +71,7 @@ export default function Component() {
         </div>
         <div className="m-10">
           <p className="text-lg text-gray-800 dark:text-gray-200 font-mono typewriter flex-wrap">
-            Hi! My name is Yen Colon and I' a software developer who loves
+            Hi! My name is Yen Colon and Im a software developer who loves
             crafting things.
           </p>
         </div>

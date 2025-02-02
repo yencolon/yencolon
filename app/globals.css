@@ -46,8 +46,7 @@
   white-space: nowrap;
   border-right: 2px solid var(--cursor-color); /* Cursor */
   animation: typewriter 3s steps(40, end) 1s 1 normal both,
-    /* delete 1.5s steps(40, end) 4.5s 1 normal forwards, */ blink 0.75s
-      step-end infinite;
+    blink 0.75s step-end infinite;
 }
 
 .typewriter2 {
