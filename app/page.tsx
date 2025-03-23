@@ -58,7 +58,7 @@ export default function Component() {
   ];
 
   return (
-    <div className="flex justify-center items-center h-screen bg-cyan-700 dark:bg-gray-900">
+    <div className="flex justify-center items-center h-screen bg-gray-700 dark:bg-gray-900">
       <div className="absolute left-0 flex flex-col flex-wrap h-screen justify-start self-end p-5 gap-2">
         <ShortcutIcon
           Icon={BookImage}
@@ -112,8 +112,8 @@ export default function Component() {
           label="earth"
         />
       </div>
-      <div className="absolute shadow-2xl bg-orange-300 dark:bg-gray-800 md:border-2 border-neutral-800 dark:border-green-300 h-screen sm:h-auto  transition duration-300 hover:scale-105">
-        <div className="bg-green-200 flex justify-between items-center border-b-2 border-black">
+      <div className="absolute shadow-2xl bg-gray-300 dark:bg-gray-800 md:border-2 border-neutral-800 dark:border-green-300 h-screen sm:h-auto  transition duration-300 hover:scale-105">
+        <div className="bg-blue-200 flex justify-between items-center border-b-2 border-black">
           <div>U+00A5 U+003A</div>
           <div className="text-lg bg-red-600 px-2 border-l-2 border-black">
             x
